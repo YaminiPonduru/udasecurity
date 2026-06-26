@@ -33,8 +33,7 @@ import java.util.stream.Collectors;
  *      aws.secret=[your Secret access key]
  *      aws.region=[an aws region of choice. For example: us-east-2]
  */
-public class AwsImageService {
-
+public class AwsImageService implements ImageService {
     private Logger log = LoggerFactory.getLogger(AwsImageService.class);
 
     //aws recommendation is to maintain only a single instance of client objects

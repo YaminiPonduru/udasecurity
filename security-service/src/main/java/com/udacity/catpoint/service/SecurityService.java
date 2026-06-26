@@ -1,5 +1,5 @@
 package com.udacity.catpoint.service;
-
+import com.udacity.catpoint.service.ImageService;
 import com.udacity.catpoint.application.StatusListener;
 import com.udacity.catpoint.data.AlarmStatus;
 import com.udacity.catpoint.data.ArmingStatus;
@@ -18,16 +18,14 @@ import java.util.Set;
  * class you will be writing unit tests for.
  */
 public class SecurityService {
-
-    private FakeImageService imageService;
+private ImageService imageService;
     private SecurityRepository securityRepository;
     private Set<StatusListener> statusListeners = new HashSet<>();
 
-    public SecurityService(SecurityRepository securityRepository, FakeImageService imageService) {
-        this.securityRepository = securityRepository;
-        this.imageService = imageService;
-    }
-
+public SecurityService(SecurityRepository securityRepository, ImageService imageService) {
+    this.securityRepository = securityRepository;
+    this.imageService = imageService;
+}
     /**
      * Sets the current arming status for the system. Changing the arming status
      * may update both the alarm status.
