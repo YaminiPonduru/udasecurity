@@ -37,8 +37,7 @@ public class AwsImageService implements ImageService {
     private Logger log = LoggerFactory.getLogger(AwsImageService.class);
 
     //aws recommendation is to maintain only a single instance of client objects
-    private static RekognitionClient rekognitionClient;
-
+private RekognitionClient rekognitionClient;
     public AwsImageService() {
         Properties props = new Properties();
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("config.properties")) {

@@ -31,13 +31,19 @@ public SecurityService(SecurityRepository securityRepository, ImageService image
      * may update both the alarm status.
      * @param armingStatus
      */
-    public void setArmingStatus(ArmingStatus armingStatus) {
-        if(armingStatus == ArmingStatus.DISARMED) {
-            setAlarmStatus(AlarmStatus.NO_ALARM);
-        }
-        securityRepository.setArmingStatus(armingStatus);
+public void setArmingStatus(ArmingStatus armingStatus) {
+
+    if (armingStatus == ArmingStatus.DISARMED) {
+        setAlarmStatus(AlarmStatus.NO_ALARM);
     }
 
+    for (Sensor sensor : securityRepository.getSensors()) {
+        sensor.setActive(false);
+        securityRepository.updateSensor(sensor);
+    }
+
+    securityRepository.setArmingStatus(armingStatus);
+}
     /**
      * Internal method that handles alarm status changes based on whether
      * the camera currently shows a cat.
